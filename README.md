@@ -107,6 +107,7 @@ wx.cloud.init({env: '-----------------------'})
 
 - [wechatpay-postman-script](https://github.com/wechatpay-apiv3/wechatpay-postman-script) —  微信支付API v3 Postman官方脚本。
 - [awesome-wechat-weapp](https://github.com/justjavac/awesome-wechat-weapp) — 微信小程序开发资源汇总。
+- [team-project-1241](https://github.com/sustech-cs304/team-project-1241) — 你科跑腿GitClass仓库版本（可能不公开）。 
 
 ## 维护者与文档编写
 
