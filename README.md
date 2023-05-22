@@ -34,7 +34,7 @@
 
 ### 开发环境安装
 
-- 安装官方的[微信小程序开发平台](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)（仅在Windows、Mac平台），建议安装STL版本。
+- 安装官方的[微信小程序开发平台](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)（仅在Windows、Mac平台），建议安装LTS版本。
 - 进入[微信小程序平台](https://mp.weixin.qq.com)，注册账号，在“开发管理-开发设置”中获取您的**AppID**。
 - 进入微信小程序开发平台，在后端服务中选择**小程序云开发**，使用获取到的**AppID**与本地仓库进行进行关联。
 
