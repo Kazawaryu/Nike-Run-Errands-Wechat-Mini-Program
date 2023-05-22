@@ -114,16 +114,15 @@ wx.cloud.init({env: '-----------------------'})
 
 ## 如何贡献
 
-非常欢迎你的加入！[提一个 Issue]() 或者提交一个 Pull Request。
+非常欢迎你的加入！[提一个 Issue](https://github.com/Kazawaryu/Nike-Run-Errands-Wechat-Mini-Program/issues) 或者提交一个 Pull Request。
 
 ### 贡献者
 
 感谢以下参与项目的人：
 
-<a href="https://github.com/eryajf/learn-github/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=eryajf/learn-github" />
+<a href="https://github.com/Kazawaryu/Nike-Run-Errands-Wechat-Mini-Program/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Kazawaryu/Nike-Run-Errands-Wechat-Mini-Program" />
 </a>
-
 
 ## 使用许可
 
