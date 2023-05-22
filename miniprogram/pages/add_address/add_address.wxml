@@ -1,0 +1,51 @@
+<!--pages/add_address/add_address.wxml-->
+
+        <van-field
+            value="{{ name }}"
+            placeholder="请输入姓名"
+            label="姓名"
+            required
+            clearable
+            bind:change="onChange_name"
+        />
+        <van-cell required title="地区" bind:click="popup_campus" value="{{choose_campus}}" is-link />
+        <van-popup show="{{ campus_show }}" round position="bottom" duration>
+            <van-picker columns="{{ campus }}" show-toolbar title="请选择地区" bind:confirm="campus_confirm" bind:cancel="campus_cancel" bind:change="campus_change" />
+        </van-popup>
+        
+        <van-field
+            value="{{ address }}"
+            placeholder="请输入详细地址"
+            label="详细地址"
+            required
+            clearable
+            bind:change="onChange_address"
+        />
+
+        <!-- <van-field
+            value="{{ phone }}"
+            placeholder="请获取手机号码"
+            label="手机号码"
+            required
+            readonly
+            clearable
+            use-button-slot
+        >
+            <van-button slot="button" custom-style="width:100rpx;font-size:25rpx" size="small" type="primary" open-type="getPhoneNumber" bind:getphonenumber="get_phone">
+              获取
+            </van-button>
+        </van-field> -->
+        <van-field
+            value="{{ phone }}"
+            placeholder="请输入手机号码"
+            label="手机号码"
+            clearable
+            required
+            label-class="ziti"
+            placeholder-style="font-size:32rpx;"
+            bind:change="onChange_shoujianphone"
+        />
+
+<view class="tianjia">
+      <van-button type="info" round plain catchtap="check">添加新地址</van-button>
+</view>

@@ -1,0 +1,25 @@
+<!--pages/gonggao/gonggao.wxml-->
+<block wx:if="{{list.length!==0}}">
+        <view class="dakuang">
+                <block wx:if="{{list.length!==0}}" wx:for="{{list}}" wx:key="index">
+                  <view class="yige" catchtap="go_detail" data-id="{{item._id}}">
+                    <view style="width:58%;margin-right:35rpx;">
+                        <view class="titile" style="font-size:31rpx;">{{item.title}}</view>
+                        <view class="zuoxia" style="color:#999999;font-size:25rpx;margin-top:15rpx;">
+                            <text>{{item.src}}</text>
+                            <block wx:if="{{item.author!==''||item.time!==''}}">
+                              <view class="zuoxia2">
+                                  <view>{{item.time}}</view>
+                              </view>
+                            </block>
+                        </view>
+                    </view>
+                    <image style="width:32%;height:180rpx;" src="{{item.pic}}"></image>
+                  </view>   
+                </block>
+        </view>
+</block>
+
+<block wx:if="{{list.length==0}}">
+               <van-empty description="暂无公告" />
+</block>

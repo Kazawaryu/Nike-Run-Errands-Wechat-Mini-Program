@@ -1,0 +1,381 @@
+/* pages/my_order/my_order.wxss */
+
+.dingdan{
+  width: 94%;
+  margin-left: 3%;
+  height: 400rpx;
+  border-radius: 20rpx;
+  box-shadow: #dddee1 10rpx 10rpx 10rpx 10rpx;
+  background-color: white;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 30rpx;
+  
+}
+.dingdan_top{
+width: 95%;
+height: 15%;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+margin-left: 2%;
+color: #495060;
+
+}
+.dingdan_top1{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   
+}
+.dingdan_center{
+ width: 95%;
+ height: 50%;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;
+ align-items: center;
+ overflow: hidden;
+ margin-left: 2%;
+ 
+}
+.dingdan_centernotes{
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  
+}
+.dingdan_centerleft{
+   width: 95%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+   overflow: hidden;
+   flex-wrap: nowrap;
+}
+.dingdan_centermai{
+width: 50%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+
+overflow: hidden;
+flex-wrap: nowrap;
+}
+.dangdan_bottom{
+margin-left: 2%;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+.dangdan_bottom1{
+margin-left: 2%;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: flex-end;
+}
+.bottom{
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+margin-bottom: 2%;
+ overflow: scroll;
+}
+
+
+
+.van-cell-text{
+  font-size: 20rpx !important;
+  color: #80848f !important;
+}
+.tiao{
+ font-size: 35rpx !important;
+ color: #1c2438 !important;
+ width: 400rpx !important;
+ 
+}
+.fabu{
+ position: fixed;
+ bottom: 200rpx;
+ right: 50rpx;
+ width: 100rpx;
+ height: 100rpx;
+ display: flex;
+ justify-content: center;
+
+ align-items: center;
+}
+.fabu image{
+ width: 90%;
+ height: 90%;
+}
+
+.tu{
+ width: 500rpx;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+ align-items: center;
+}
+.fl{
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ align-items: center;
+}
+.img2{
+ width: 210rpx;
+ height: 210rpx;
+
+}
+.img2 view{
+color: red;
+z-index: 5;
+position: relative; 
+width: 20rpx;
+height: 20rpx;
+margin-top:0rpx;
+margin-left: 90%;
+}
+.img2 image{
+width: 190rpx;
+height: 190rpx;
+position: relative;
+z-index: 5;
+}
+
+.zi{
+ font-size: 30rpx !important;
+ color: #495060 !important;
+}
+.im_ban{
+ width: 90%;
+ height: 250rpx;
+ margin-left: 5%;
+ margin-top: 20rpx;
+ border-radius: 20rpx;
+ margin-bottom: 20rpx;
+}
+
+
+
+
+
+
+
+
+
+
+.dianzan{
+  width: 90%;
+  height: 100rpx;
+  margin-top: 20rpx;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.dianzan1{
+  width: 48%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  background-color: white;
+  box-shadow: #dddee1 5rpx 5rpx 5rpx 5rpx;
+  border-radius: 20rpx;
+
+}
+.fl{
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
+.juz{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.juz image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.im_ban{
+  width: 90%;
+  height: 270rpx;
+  margin-left: 5%;
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.tips{
+  width: 90%;
+  margin-top: 40rpx;
+  margin-left: 5%;
+  margin-bottom: 50rpx;
+  font: outline;
+}
+.t1{
+  font-size: 30rpx;
+  line-height: 45rpx;
+  letter-spacing: 3rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.t1 image{
+  width: 30rpx;
+  height: 30rpx;
+  padding-right: 20rpx;
+}
+.t2{
+  font-size: 28rpx;
+  line-height: 45rpx;
+  margin-top: 20rpx;
+  letter-spacing: 3rpx;
+  color:#b2b2b2;
+}
+
+.des {
+  padding-left: 40rpx;
+  padding-top: 20rpx;
+  font-size: 26rpx;
+  color: #acacac;
+  letter-spacing: 2rpx;
+  line-height: 42rpx;
+}
+.ziti{
+  font-size: 35rpx;
+  margin-top: 10rpx;
+}
+
+.b_notes {
+  width: 100%;
+  padding: 10rpx;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.b_text {
+  width: 94%;
+  height: 200rpx;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: rgb(238, 238, 238);
+  margin-left: 3%;
+}
+.b_text1 {
+  width: 94%;
+  height: 300rpx;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: rgb(238, 238, 238);
+  margin-left: 3%;
+}
+
+.b_text textarea {
+  width: 100%;
+  height: 130rpx;
+  font-size: 28rpx;
+  color: #8c9aa8;
+  border-spacing: 2rpx;
+}
+.b_text1 textarea {
+  width: 100%;
+  height: 300rpx;
+  font-size: 28rpx;
+  color: #8c9aa8;
+  border-spacing: 2rpx;
+}
+.b_less {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 28rpx;
+  letter-spacing: 2rpx;
+  color: #8c9aa8;
+}
+.img{
+  margin-left: 5%;
+  width: 90%;
+  display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+.img2{
+   width: 210rpx;
+   height: 210rpx;
+}
+.img2 view{
+  color: red;
+  z-index: 5;
+  position: relative; 
+  width: 20rpx;
+  height: 20rpx;
+  margin-top:0rpx;
+  margin-left: 90%;
+}
+.img2 image{
+  width: 190rpx;
+  height: 190rpx;
+  position: relative;
+  z-index: 5;
+}
+.fabu{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.ty{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 40rpx;
+  margin-top: 20rpx;
+}
+.pingqu{
+  width: 94%;
+  height: 850rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  margin-left: 3%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+.zi{
+  font-size: 30rpx !important;
+  color: #495060 !important;
+}

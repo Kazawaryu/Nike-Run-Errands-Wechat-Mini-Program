@@ -1,0 +1,467 @@
+<!--pages/my_publish/my_publish.wxml-->
+
+
+<wxs src="../../common.wxs" module="morejs" />
+
+<van-tabs active="{{ status }}" bind:change="status_Change" custom-class="wen">
+  <van-tab title="待接单">
+            <block wx:if="{{list.length!==0}}" wx:for="{{list}}" wx:key="index">
+             
+              <!--帮我买-->
+              <view wx:if="{{item.type==2&&item.status==0}}" class="dingdan">
+                 <view class="dingdan_top">
+                     <view class="dingdan_top1">
+                          <view style="width: 10%;">{{index+1}}、</view>
+                          <image lazy-load style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/mai.png"></image>
+                     </view>
+                     <view>
+                         <text>{{morejs.timelog(item.creat)}}前发布</text>
+                     </view>
+                     <view style="color: red;">{{item.paotui_price}}元</view>
+                 </view>
+                 <view class="dingdan_center">
+                      <view class="dingdan_centerleft">
+                           <view class="dingdan_centermai"><view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.content_value}}</view></view>
+                      </view>
+                      
+                      <text>↓</text>
+                      
+                      <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                          {{item.address.address}}
+                      </view>
+                 </view>
+                 <view class="dingdan_bottom" >
+                        <van-button size="mini" custom-style="width:100rpx;margin-left:20rpx;" plain type="info">{{item.weight}}kg</van-button> 
+                        <van-button size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">就近购买</van-button> 
+                        <van-button size="mini" custom-style="width:200rpx;margin-left:20rpx;" plain type="info">商品费当面核对</van-button> 
+                 </view>
+                 <view class="bottom">
+                         <van-button size="mini" disabled="{{button_disabled}}" bind:click="cancel_publish" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" round type="default">取消订单</van-button>
+                 </view>
+              </view>
+
+              <!--帮我送-->
+              <view wx:if="{{item.type==1&&item.status==0}}" class="dingdan">
+                 <view class="dingdan_top">
+                     <view class="dingdan_top1">
+                          <view style="width: 10%;">{{index+1}}、</view>
+                          <image style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/song.png"></image>
+                     </view>
+                     <view>
+                         <text>{{morejs.timelog(item.creat)}}前发布</text>
+                     </view>
+                     <view style="color: red;">{{item.paotui_price}}元</view>
+                 </view>
+                 <view class="dingdan_center">
+                      <view class="dingdan_centerleft">
+                           <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.pick_address.address}}</view>  
+                      </view>
+                
+                      <text>↓</text>
+                      
+                      <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                          {{item.address.address}}
+                      </view>
+                 </view>
+                 <view class="dingdan_bottom">
+                        <van-button size="mini" custom-style="width:100rpx;margin-left:20rpx;" plain type="info">{{item.weight}}kg</van-button> 
+                        <van-button size="mini" custom-style="width:200rpx;margin-left:20rpx;" plain type="info">送{{item.choose_goods}}</van-button> 
+                 </view>
+                 <view class="bottom">
+                        <van-button size="mini" disabled="{{button_disabled}}" bind:click="cancel_publish" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" round type="default">取消订单</van-button>
+                 </view>
+              </view>
+
+              <!--帮我取-->
+              <view wx:if="{{item.type==0&&item.status==0}}" class="dingdan">
+                 <view class="dingdan_top">
+                     <view class="dingdan_top1">
+                          <view style="width: 10%;">{{index+1}}、</view>
+                          <image lazy-load style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/qu.png"></image>
+                     </view>
+                     <view>
+                         <text>{{morejs.timelog(item.creat)}}前发布</text>
+                     </view>
+                     <view style="color: red;">{{item.paotui_price}}元</view>
+                 </view>
+                 <view class="dingdan_center">
+                      <view class="dingdan_centerleft">
+                           <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">学校快递点</view>
+                      </view>
+                
+                      <text>↓</text>
+                      
+                      <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                          {{item.address.address}}
+                      </view>
+                 </view>
+                 <view class="dingdan_bottom" >
+                        <van-button size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">取快递</van-button> 
+                        <van-button size="mini" custom-style="width:250rpx;margin-left:20rpx;" plain type="info">接单可看取件码</van-button>
+                 </view>
+                 <view class="bottom">
+                        <van-button size="mini" disabled="{{button_disabled}}" bind:click="cancel_publish" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" round type="default">取消订单</van-button>
+                 </view>
+              </view>
+
+            </block>
+
+            <block wx:if="{{list.length==0}}">
+                  <van-empty description="空空如也" />
+            </block>
+        
+  </van-tab>
+  <van-tab title="配送中">
+      <block wx:if="{{list.length!==0}}" wx:for="{{list}}" wx:key="index">
+             
+             <!--帮我买-->
+             <view wx:if="{{item.type==2&&item.status==1}}" class="dingdan">
+                <view class="dingdan_top">
+                    <view class="dingdan_top1">
+                         <view style="width: 10%;">{{index+1}}、</view>
+                         <image lazy-load style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/mai.png"></image>
+                    </view>
+                    <view>
+                        <text>{{morejs.timelog(item.creat)}}前发布</text>
+                    </view>
+                    <view style="color: red;">{{item.paotui_price}}元</view>
+                </view>
+                <view class="dingdan_center">
+                     <view class="dingdan_centerleft">
+                          <view class="dingdan_centermai"><view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.content_value}}</view></view>
+                     </view>
+                     
+                     <text>↓</text>
+                     
+                     <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                         {{item.address.address}}
+                     </view>
+                </view>
+                <view class="dingdan_bottom" >
+                       <van-button size="mini" custom-style="width:100rpx;margin-left:20rpx;" plain type="info">{{item.weight}}kg</van-button> 
+                       <van-button size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">就近购买</van-button> 
+                       <van-button size="mini" custom-style="width:200rpx;margin-left:20rpx;" plain type="info">商品费当面核对</van-button> 
+                </view>
+                <view class="bottom">
+                       <van-button size="mini" disabled="{{button_disabled}}" bind:click="call_qishou" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" round type="default">联系骑手</van-button>
+
+                </view>
+             </view>
+
+             <!--帮我送-->
+             <view wx:if="{{item.type==1&&item.status==1}}" class="dingdan">
+                <view class="dingdan_top">
+                    <view class="dingdan_top1">
+                         <view style="width: 10%;">{{index+1}}、</view>
+                         <image style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/song.png"></image>
+                    </view>
+                    <view>
+                        <text>{{morejs.timelog(item.creat)}}前发布</text>
+                    </view>
+                    <view style="color: red;">{{item.paotui_price}}元</view>
+                </view>
+                <view class="dingdan_center">
+                     <view class="dingdan_centerleft">
+                          <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.pick_address.address}}</view>  
+                     </view>
+               
+                     <text>↓</text>
+                     
+                     <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                         {{item.address.address}}
+                     </view>
+                </view>
+                <view class="dingdan_bottom">
+                       <van-button size="mini" custom-style="width:100rpx;margin-left:20rpx;" plain type="info">{{item.weight}}kg</van-button> 
+                       <van-button size="mini" custom-style="width:200rpx;margin-left:20rpx;" plain type="info">送{{item.choose_goods}}</van-button> 
+                </view>
+                <view class="bottom">
+                       <van-button size="mini" disabled="{{button_disabled}}" bind:click="call_qishou" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" round type="default">联系骑手</van-button>
+                </view>
+             </view>
+
+             <!--帮我取-->
+             <view wx:if="{{item.type==0&&item.status==1}}" class="dingdan">
+                <view class="dingdan_top">
+                    <view class="dingdan_top1">
+                         <view style="width: 10%;">{{index+1}}、</view>
+                         <image lazy-load style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/qu.png"></image>
+                    </view>
+                    <view>
+                        <text>{{morejs.timelog(item.creat)}}前发布</text>
+                    </view>
+                    <view style="color: red;">{{item.paotui_price}}元</view>
+                </view>
+                <view class="dingdan_center">
+                     <view class="dingdan_centerleft">
+                          <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">学校快递点</view>
+                     </view>
+               
+                     <text>↓</text>
+                     
+                     <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                         {{item.address.address}}
+                     </view>
+                </view>
+                <view class="dingdan_bottom" >
+                       <van-button size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">取快递</van-button> 
+                       <van-button size="mini" custom-style="width:250rpx;margin-left:20rpx;" plain type="info">接单可看取件码</van-button>
+                </view>
+                <view class="bottom">
+                       <van-button size="mini" disabled="{{button_disabled}}" bind:click="call_qishou" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" round type="default">联系骑手</van-button>
+                </view>
+             </view>
+
+           </block>
+
+           <block wx:if="{{list.length==0}}">
+                 <van-empty description="空空如也" />
+           </block>
+  </van-tab>
+  <van-tab title="已取消">
+      <block wx:if="{{list.length!==0}}" wx:for="{{list}}" wx:key="index">
+             
+             <!--帮我买-->
+             <view wx:if="{{item.type==2&&item.status==2}}" class="dingdan">
+                <view class="dingdan_top">
+                    <view class="dingdan_top1">
+                         <view style="width: 10%;">{{index+1}}、</view>
+                         <image lazy-load style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/mai.png"></image>
+                    </view>
+                    <view>
+                        <text>{{morejs.timelog(item.creat)}}前发布</text>
+                    </view>
+                    <view style="color: red;">{{item.paotui_price}}元</view>
+                </view>
+                <view class="dingdan_center">
+                     <view class="dingdan_centerleft">
+                          <view class="dingdan_centermai"><view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.content_value}}</view></view>
+                     </view>
+                     
+                     <text>↓</text>
+                     
+                     <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                         {{item.address.address}}
+                     </view>
+                </view>
+                <view class="dingdan_bottom" >
+                       <van-button size="mini" custom-style="width:100rpx;margin-left:20rpx;" plain type="info">{{item.weight}}kg</van-button> 
+                       <van-button size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">就近购买</van-button> 
+                       <van-button size="mini" custom-style="width:200rpx;margin-left:20rpx;" plain type="info">商品费当面核对</van-button> 
+                </view>
+                <view class="bottom">
+                        <van-button size="mini" disabled="{{button_disabled}}" bind:click="delete_publish" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" round type="danger">删除</van-button>
+
+                </view>
+             </view>
+
+             <!--帮我送-->
+             <view wx:if="{{item.type==1&&item.status==2}}" class="dingdan">
+                <view class="dingdan_top">
+                    <view class="dingdan_top1">
+                         <view style="width: 10%;">{{index+1}}、</view>
+                         <image style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/song.png"></image>
+                    </view>
+                    <view>
+                        <text>{{morejs.timelog(item.creat)}}前发布</text>
+                    </view>
+                    <view style="color: red;">{{item.paotui_price}}元</view>
+                </view>
+                <view class="dingdan_center">
+                     <view class="dingdan_centerleft">
+                          <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.pick_address.address}}</view>  
+                     </view>
+               
+                     <text>↓</text>
+                     
+                     <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                         {{item.address.address}}
+                     </view>
+                </view>
+                <view class="dingdan_bottom">
+                       <van-button size="mini" custom-style="width:100rpx;margin-left:20rpx;" plain type="info">{{item.weight}}kg</van-button> 
+                       <van-button size="mini" custom-style="width:200rpx;margin-left:20rpx;" plain type="info">送{{item.choose_goods}}</van-button> 
+                </view>
+                <view class="bottom">
+                       <van-button size="mini" disabled="{{button_disabled}}" bind:click="delete_publish" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" round type="danger">删除</van-button>
+                </view>
+             </view>
+
+             <!--帮我取-->
+             <view wx:if="{{item.type==0&&item.status==2}}" class="dingdan">
+                <view class="dingdan_top">
+                    <view class="dingdan_top1">
+                         <view style="width: 10%;">{{index+1}}、</view>
+                         <image lazy-load style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/qu.png"></image>
+                    </view>
+                    <view>
+                        <text>{{morejs.timelog(item.creat)}}前发布</text>
+                    </view>
+                    <view style="color: red;">{{item.paotui_price}}元</view>
+                </view>
+                <view class="dingdan_center">
+                     <view class="dingdan_centerleft">
+                          <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">学校快递点</view>
+                     </view>
+               
+                     <text>↓</text>
+                     
+                     <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                         {{item.address.address}}
+                     </view>
+                </view>
+                <view class="dingdan_bottom" >
+                       <van-button size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">取快递</van-button> 
+                       <van-button size="mini" custom-style="width:250rpx;margin-left:20rpx;" plain type="info">接单可看取件码</van-button>
+                </view>
+                <view class="bottom">
+                       <van-button size="mini" disabled="{{button_disabled}}" bind:click="delete_publish" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" round type="danger">删除</van-button>
+                </view>
+             </view>
+
+           </block>
+
+           <block wx:if="{{list.length==0}}">
+                 <van-empty description="空空如也" />
+           </block>
+  </van-tab>
+  <van-tab title="已完成">
+            <block wx:if="{{list.length!==0}}" wx:for="{{list}}" wx:key="index">
+             
+              <!--帮我买已完成-->
+              <view wx:if="{{item.type==2&&item.status==3}}" class="dingdan">
+                 <view class="dingdan_top">
+                     <view class="dingdan_top1">
+                          <view style="width: 10%;">{{index+1}}、</view>
+                          <image lazy-load style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/mai.png"></image>
+                     </view>
+                     <view>
+                         <text>{{item.pei_time}}配送完成</text>
+                     </view>
+                     <view style="color: red;">{{item.paotui_price}}元</view>
+                 </view>
+                 <view class="dingdan_center">
+                      <view class="dingdan_centerleft">
+                           <view class="dingdan_centermai"><view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.content_value}}</view></view>
+                      </view>
+                      
+                      <text>↓</text>
+                      
+                      <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                          {{item.address.address}}
+                      </view>
+                 </view>
+                 <view class="dingdan_bottom" >
+                        <van-button size="mini" custom-style="width:100rpx;margin-left:20rpx;" plain type="info">{{item.weight}}kg</van-button> 
+                        <van-button size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">就近购买</van-button> 
+                        <van-button size="mini" custom-style="width:200rpx;margin-left:20rpx;" plain type="info">商品费当面核对</van-button> 
+                 </view>
+                 <view class="bottom">
+                        <van-button size="mini" disabled="{{button_disabled}}" bind:click="has_yiyi" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" wx:if="{{!item.has}}" round type="default">有异议</van-button>
+                        <van-button size="mini" disabled="{{button_disabled}}" bind:click="pingjia" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" wx:if="{{!item.pingjia}}" round type="danger">评价</van-button>
+                 </view>
+              </view>
+             
+              <!--帮我送已完成-->
+              <view wx:if="{{item.type==1&&item.status==3}}" class="dingdan">
+                 <view class="dingdan_top">
+                     <view class="dingdan_top1">
+                          <view style="width: 10%;">{{index+1}}、</view>
+                          <image lazy-load style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/song.png"></image>
+                     </view>
+                     <view>
+                          <text>{{item.pei_time}}配送完成</text>
+                     </view>
+                     <view style="color: red;">{{item.paotui_price}}元</view>
+                 </view>
+                 <view class="dingdan_center">
+                      <view class="dingdan_centerleft">
+                           <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{item.pick_address.address}}</view>  
+                      </view>
+                
+                      <text>↓</text>
+                      
+                      <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                          {{item.address.address}}
+                      </view>
+                 </view>
+                 <view class="dingdan_bottom">
+                        <van-button size="mini" custom-style="width:100rpx;margin-left:20rpx;" plain type="info">{{item.weight}}kg</van-button> 
+                        <van-button size="mini" custom-style="width:200rpx;margin-left:20rpx;" plain type="info">送{{item.choose_goods}}</van-button> 
+                 </view>
+                 <view class="bottom">
+                        <van-button size="mini" disabled="{{button_disabled}}" bind:click="has_yiyi" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" wx:if="{{!item.has}}" round type="default">有异议</van-button>
+                        <van-button size="mini" disabled="{{button_disabled}}" bind:click="pingjia" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" wx:if="{{!item.pingjia}}" round type="danger">评价</van-button>
+                 </view>
+              </view>
+            
+              <!--帮我取已完成-->
+              <view wx:if="{{item.type==0&&item.status==3}}" class="dingdan">
+                 <view class="dingdan_top">
+                     <view class="dingdan_top1">
+                          <view style="width: 10%;">{{index+1}}、</view>
+                          <image lazy-load style="width: 50rpx;height: 50rpx;margin-left: 20rpx;" src="/images/qu.png"></image>
+                     </view>
+                     <view>
+                         <text>{{item.pei_time}}配送完成</text>
+                     </view>
+                     <view style="color: red;">{{item.paotui_price}}元</view>
+                 </view>
+                 <view class="dingdan_center">
+                      <view class="dingdan_centerleft">
+                           <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">学校快递点</view>
+                      </view>
+                
+                      <text>↓</text>
+                      
+                      <view style="width: 90%;text-align: center; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                          {{item.address.address}}
+                      </view>
+                 </view>
+                 <view class="dingdan_bottom" >
+                        <van-button size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">取快递</van-button> 
+                        <van-button size="mini" custom-style="width:250rpx;margin-left:20rpx;" plain type="info">接单可看取件码</van-button>
+                 </view>
+                 <view class="bottom">
+                         <van-button size="mini" disabled="{{button_disabled}}" bind:click="has_yiyi" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" wx:if="{{!item.has}}" round type="default">有异议</van-button>
+                        <van-button size="mini" disabled="{{button_disabled}}" bind:click="pingjia" data-item="{{item}}" custom-style="width:150rpx;margin-right:50rpx;" wx:if="{{!item.pingjia}}" round type="danger">评价</van-button>
+                 </view>
+              </view>
+            </block>
+
+            <block wx:if="{{list.length==0}}">
+                  <van-empty description="空空如也" />
+            </block>
+        
+  </van-tab>
+
+</van-tabs>
+
+
+
+<block wx:if="{{ pinglun_show}}">
+      <van-overlay custom-style="display:flex;justify-content:space-around;align-items:center;" z-index="100" show>
+            <view class="pingqu">
+                  <view class="des">温馨提示：也可以上传图片哦（非必填）</view>
+                        <view class="img">
+                        <block wx:for="{{ fileList_img }}" wx:key="index">
+                              <view class="img2">
+                              <view bindtap="delete_img" data-id="{{index}}">x</view>
+                              <image bindtap="previewImage_img" data-url="{{item}}" src="{{item}}"></image>
+                              </view> 
+                        </block>
+                        <image wx:if="{{fileList_img.length<4}}" bindtap="uploadToCloud_img" style="width: 200rpx;height: 200rpx;" src="/images/xiangji.png"></image>
+                  </view>
+                  <view class="b_notes">
+                              <view class="b_text">
+                                    <textarea value="{{pinglun_value}}" bindinput="pinglunInput" maxlength="100" placeholder="请输入评价内容" placeholder-style="font-size:30rpx;"></textarea>
+                                    <view class="b_less">{{pinglun_counts}}/100</view>
+                              </view>
+                  </view>
+                  <view style="width: 100%;display:flex;justify-content:space-around;align-items:center;">
+                        <van-button plain size="small"  round custom-style="width:200rpx;" type="info" bind:click="cancel">取消</van-button>
+                        <van-button size="small" round custom-style="width:200rpx;" type="info" bind:click="add_pinglun">确定</van-button>
+                  </view>
+            </view>
+      </van-overlay>
+</block>

@@ -1,0 +1,17 @@
+/* pages/add_address/add_address.wxss */
+page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5%;
+  width: 90%;
+  background-color: #f6f6f6;
+  margin-top: 100rpx;
+}
+.tianjia{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 50rpx;
+}

@@ -1,0 +1,40 @@
+<!--pages/my/my.wxml-->
+<view class="top">
+     <view class="avtar">
+        <image wx:if="{{!avatarUrl}}" style="width:140rpx;height:140rpx" src="/images/my.png"></image>
+        <image wx:if="{{avatarUrl}}" style="width:140rpx;height:140rpx" src="{{avatarUrl}}"></image>
+     </view>
+     
+     <button wx:if="{{!avatarUrl}}" type="primary" style="font-size: 32rpx;" bindtap="getUserProfile">授权展示头像和昵称</button>
+     <view wx:if="{{avatarUrl}}" type="default" style="font-size: 35rpx;">{{nickName}}</view>
+</view>
+
+
+
+<view class="center">
+    <van-grid  center column-num="3">            
+              <van-grid-item icon="/images/take_order.png" bind:click="go_order" text="我的接单" data-url="/pages/my_order/my_order" />
+              <van-grid-item icon="/images/dingdan.png" bind:click="go_publish" text="我的订单" data-url="/pages/my_publish/my_publish" />
+              <van-grid-item icon="/images/zhaomu.png" bind:click="go_apply" text="申请跑腿" data-url="/pages/apply/apply" />
+    </van-grid>
+</view>
+
+
+<view class="dibu">
+     <view class="gongju">
+        <view class="fuwu"></view>
+        <text>欢迎使用</text>
+     </view>
+
+      <van-grid  center column-num="3">            
+              <van-grid-item icon="/images/qianbao.png" bind:click="go" text="我的钱包" data-url="/pages/parse/parse" />
+              <van-grid-item icon="/images/tongzhi.png" bind:click="go" text="通知公告" data-url="/pages/gonggao/gonggao" />
+              <van-grid-item icon="/images/help.png" bind:click="go" text="帮助中心" data-url="/pages/help/help" />
+              <van-grid-item icon="/images/kefu.png" bind:click="go" text="在线客服" data-url="/pages/kefu/kefu" />
+              <van-grid-item icon="/images/fankui.png" bind:click="go" text="意见反馈" data-url="/pages/yijian/yijian" />
+      </van-grid>
+
+</view>
+
+
+<avatarNicknameModal showAvaModal="{{showAvaModal}}" bind:getAvaNickData="getAvaNickData"></avatarNicknameModal>

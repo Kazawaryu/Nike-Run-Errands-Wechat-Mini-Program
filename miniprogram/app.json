@@ -1,0 +1,76 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/publish/publish",
+    "pages/my/my",
+    "pages/address/address",
+    "pages/add_address/add_address",
+    "pages/my_order/my_order",
+    "pages/my_publish/my_publish",
+    "pages/apply/apply",
+    "pages/kefu/kefu",
+    "pages/help/help",
+    "pages/gonggao/gonggao",
+    "pages/detail/detail",
+    "pages/yijian/yijian",
+    "pages/parse/parse",
+    "pages/reflect/reflect",
+    "pages/order_detail/order_detail"
+
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2d8cf0",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#80848f",
+    "selectedColor": "#2d8cf0",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index2.png"
+      },
+      {
+        "text": "接单大厅",
+        "pagePath": "pages/publish/publish",
+        "iconPath": "images/publish.png",
+        "selectedIconPath": "images/publish2.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/my/my",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my2.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-field": "vant/field/index",
+    "van-cell-group": "vant/cell-group/index",
+    "van-button": "vant/button/index",
+    "van-notice-bar": "vant/notice-bar/index",
+    "van-empty": "vant/empty/index",
+    "van-popup": "vant/popup/index",
+    "van-slider": "vant/slider/index",
+    "van-picker": "vant/picker/index",
+    "van-grid": "vant/grid/index",
+    "van-grid-item": "vant/grid-item/index",
+    "van-cell": "vant/cell/index",
+    "van-search": "vant/search/index",
+    "van-tab": "vant/tab/index",
+    "van-card": "vant/card/index",
+    "van-stepper": "vant/stepper/index",
+    "van-steps": "vant/steps/index",
+    "van-tabs": "vant/tabs/index",
+    "van-tag": "vant/tag/index",
+    "avatarNicknameModal":"/components/avatarNicknameModal/avatarNicknameModal",
+    "van-overlay": "vant/overlay/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

@@ -1,0 +1,53 @@
+<!--pages/dizhi/dizhi.wxml-->
+<!--默认地址-->
+<block wx:if="{{list.length!=0}}" wx:for="{{list}}" wx:key="index">
+    <block wx:if="{{item.default}}">
+      <van-card desc="{{item.campus}}" title="{{item.name}} {{item.phone}}" catchtap="select_address" data-address="{{item}}">
+          <view  wx:if="{{item.default}}" class="school" slot="price">
+            <van-button custom-style="width:200rpx;" plain type="danger" size="mini">默认地址</van-button>
+          </view>
+          <view class="school" slot="tags">
+              <view>{{item.address}}</view>
+          </view>
+          <view  wx:if="{{!item.default}}" class="anniu_foot" slot="footer">
+              <van-button custom-style="width:200rpx;" plain type="info" size="mini" data-id="{{item._id}}" bind:click="default">设为默认</van-button>
+          </view>
+      </van-card>
+    </block>
+</block>
+<!--非默认地址-->
+<block wx:if="{{list.length!=0}}" wx:for="{{list}}" wx:key="index">
+    <block wx:if="{{!item.default}}">
+      <van-card desc="{{item.campus}}" title="{{item.name}} {{item.phone}}" catchtap="select_address" data-address="{{item}}">
+          <view  wx:if="{{item.default}}" class="school" slot="price">
+            <van-button custom-style="width:200rpx;" plain type="danger" size="mini">默认地址</van-button>
+          </view>
+          <view class="school" slot="tags">
+              <view>{{item.address}}</view>
+          </view>
+          <view  wx:if="{{!item.default}}" class="anniu_foot" slot="footer">
+              <van-button custom-style="width:200rpx;" plain type="info" size="mini" data-id="{{item._id}}" bind:click="default">设为默认</van-button>
+          </view>
+      </van-card>
+    </block>
+</block>
+
+<block wx:if="{{list.length==0}}">
+    <van-empty description="空空如也" />
+</block>
+
+<view class="tianjia">
+      <van-button type="info" round plain catchtap="go">添加新地址</van-button>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+

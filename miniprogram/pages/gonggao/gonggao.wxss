@@ -1,0 +1,29 @@
+/* pages/gonggao/gonggao.wxss */
+.dakuang{
+  background-color: white;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  border-radius: 30rpx;
+  
+}
+.yige{
+  width: 100%;
+  padding: 25rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+.zuoxia{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.zuoxia2{
+  width: 190rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

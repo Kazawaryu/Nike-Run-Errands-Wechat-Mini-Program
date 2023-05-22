@@ -1,0 +1,33 @@
+<!--pages/reflect/reflect.wxml-->
+<view class="contain">
+      <view class="cardyuer">
+            <view class="title">我的余额</view>
+            <view class="num">{{balance}}</view>
+      </view>
+
+      <view class="card">
+          
+            <view class="b2">
+
+              <view class="card">
+                    <image wx:if="{{!fileList_img[0]}}" mode="aspectFit" style="height: 250rpx;" src="/images/code.png"></image>
+                    <image wx:if="{{fileList_img[0]}}" bindtap="previewImage_img" data-url="{{fileList_img[0]}}" mode="aspectFit" style="height: 250rpx;" src="{{fileList_img[0]}}"></image>
+                    <button style="font-size: 30rpx;margin-top: 10rpx;" size="mini" type="primary" bindtap="uploadToCloud_img">上传微信收款码</button>
+              </view>
+
+            </view>
+      </view>
+      <view wx:if="{{!button_disabled}}" class="confirm" bindtap="check">确认提现</view>
+      <view wx:if="{{button_disabled}}" class="confirm">确认提现</view>
+      <!-- <view class="confirm" bindtap="check">确认提现</view> -->
+
+      <view class="tips">
+            <view class="t1">
+                  <image src="/images/about.png" /> 提现说明：
+            </view>
+            
+            <view class="t2">1. 请务必确保上传的收款码正确！</view>
+            <view class="t2">2. 为了安全，每次都是全额提现，钱会24小时内到账哦</view>
+            <view class="t2">3. 本程序竭力保证每位同学的利益，出现任何问题不要慌，马上和客服联系处理</view>
+      </view>
+</view>

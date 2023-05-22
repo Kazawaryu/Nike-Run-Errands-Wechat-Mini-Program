@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "avatarNicknameModal":"../../components/avatarNicknameModal/avatarNicknameModal"
+  },
+  "navigationBarTitleText": "首页"
+}

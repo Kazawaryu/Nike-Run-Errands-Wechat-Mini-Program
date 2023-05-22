@@ -1,0 +1,24 @@
+/* pages/dizhi/dizhi.wxss */
+
+
+.anniu_foot{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  
+}
+.school{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tianjia{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 50rpx;
+  margin-bottom: 100rpx;
+}

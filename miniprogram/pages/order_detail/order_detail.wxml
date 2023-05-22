@@ -1,0 +1,60 @@
+<!--pages/order_detail/order_detail.wxml-->
+<!--帮我送-->
+<block wx:if="{{shuju.publish_data.type==1}}">
+            <van-cell title="取件地址" use-label-slot>
+                  <view slot="label">
+                    <van-cell label="{{shuju.publish_data.pick_address.address}}" />
+                  </view>
+                  <view slot="right-icon">
+                    <van-button bind:click="call_phone" data-phone="{{shuju.publish_data.pick_address.phone}}" size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">联系取件</van-button> 
+                  </view>
+            </van-cell>
+            <van-cell title="物品类型" readonly value="{{shuju.publish_data.choose_goods}}"/>
+            <van-cell title="收件地址" use-label-slot>
+                  <view slot="label">
+                    <van-cell label="{{shuju.publish_data.address.address}}" />
+                  </view>
+                  <view slot="right-icon">
+                    <van-button bind:click="call_phone" data-phone="{{shuju.publish_data.address.phone}}" size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">联系收件</van-button> 
+                  </view>
+            </van-cell>
+
+</block>
+<!--帮我取-->
+<block wx:if="{{shuju.publish_data.type==0}}">
+              <van-field value="学校快递点" label="取件地点" readonly/>
+              <view class="des">取件码如下：</view>
+              <view class="b_notes">
+                  <view class="b_text">
+                        <textarea value="{{shuju.publish_data.content_value}}"  disabled ></textarea>
+                  </view>
+              </view>
+              <van-cell title="收件地址" use-label-slot>
+                  <view slot="label">
+                      <van-cell label="{{shuju.publish_data.address.address}}" />
+                  </view>
+                  <view slot="right-icon">
+                       <van-button bind:click="call_phone" data-phone="{{shuju.publish_data.address.phone}}" size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">联系收件</van-button> 
+                  </view>
+               </van-cell>
+</block>
+<!--帮我买-->
+<block wx:if="{{shuju.publish_data.type==2}}">
+              <van-field value="就近购买" label="购买地点" readonly/>
+              <view class="des">购买商品如下：</view>
+              <view class="b_notes">
+                  <view class="b_text">
+                        <textarea value="{{shuju.publish_data.content_value}}"  disabled ></textarea>
+                  </view>
+              </view>
+              <van-cell title="收件地址" use-label-slot>
+                  <view slot="label">
+                      <van-cell label="{{shuju.publish_data.address.address}}" />
+                  </view>
+                  <view slot="right-icon">
+                       <van-button bind:click="call_phone" data-phone="{{shuju.publish_data.address.phone}}" size="mini" custom-style="width:150rpx;margin-left:20rpx;" plain type="info">联系收件</van-button> 
+                  </view>
+               </van-cell>
+</block>
+
+

@@ -1,0 +1,104 @@
+<!--pages/index/index.wxml-->
+
+<view class='card'>
+  <van-tabs active="{{ type }}" bind:change="type_Change">
+    <van-tab title="帮我取">
+       <view class="card_1">
+            <view class="des">温馨提示:每个取件码，用逗号隔开</view>
+            <view class="b_notes">
+                <view class="b_text">
+                      <textarea value="{{content_value}}" maxlength="100" bindinput="content_Input" placeholder="请输入取件码，如：中通5123,圆通6249"></textarea>
+                      <view class="b_less">{{content_counts}}/100</view>
+                </view>
+            </view>
+            <van-cell wx:if="{{!address.address}}"  title="收件地址" value="请选择" bind:click="go" data-come_id="1"  is-link/>
+            <van-cell wx:if="{{address.address}}"  title="收件地址" value="{{address.address}}" bind:click="go"  data-come_id="1" is-link/>
+
+
+            <van-cell title="大概重量（kg）"/>
+            <van-slider custom-class="slide" value="{{ weight }}" min="1" max="30" use-button-slot bind:drag="change_weight" bind:change="change_weight">
+                <view hidden="{{weight>15}}" class="custom-button" slot="button">{{ weight }}</view>
+                <view hidden="{{weight<15||weight==15}}" class="custom-buttonred" slot="button">{{ weight }}</view>
+            </van-slider>
+
+           
+
+            <view class="b_bar">
+                      <view class="b_name">跑腿费(元)</view>
+                      <van-stepper value="{{price}}" integer bind:change="price_Change" min="2" max="100" />
+            </view>
+
+            <view class="b_tips">
+                    <text>* </text>跑腿费越多，接单同学越快、越积极哦
+            </view>
+       </view>
+    </van-tab>
+    <van-tab title="帮我送">
+      <view class="card_1">
+            <van-cell wx:if="{{!pick_address.address}}"  title="取件地址" value="请选择" bind:click="go" data-come_id="2" is-link/>
+            <van-cell wx:if="{{pick_address.address}}"  title="取件地址" value="{{pick_address.address}}" bind:click="go" data-come_id="2" is-link/>
+
+            <van-cell title="物品类型" bind:click="popup_goods" value="{{choose_goods}}" is-link/>
+            <van-popup show="{{ goods_show }}" z-index="100" round position="bottom" duration>
+                <van-picker columns="{{ goods }}" show-toolbar title="请选择物品类型" bind:confirm="goods_confirm" bind:cancel="goods_cancel" bind:change="goods_change" />
+            </van-popup>
+
+            <van-cell wx:if="{{!address.address}}"  title="收件地址" value="请选择" bind:click="go" data-come_id="1" is-link/>
+            <van-cell wx:if="{{address.address}}"  title="收件地址" value="{{address.address}}" data-come_id="1" bind:click="go" is-link/>
+
+            
+            <van-cell title="大概重量（kg）"/>
+            <van-slider custom-class="slide" value="{{ weight }}" min="1" max="30" use-button-slot bind:drag="change_weight" bind:change="change_weight">
+                <view hidden="{{weight>15}}" class="custom-button" slot="button">{{ weight }}</view>
+                <view hidden="{{weight<15||weight==15}}" class="custom-buttonred" slot="button">{{ weight }}</view>
+            </van-slider>
+
+            <view class="b_bar">
+                      <view class="b_name">跑腿费(元)</view>
+                      <van-stepper value="{{price}}" integer bind:change="price_Change" min="2" max="100" />
+            </view>
+
+            <view class="b_tips">
+                    <text>* </text>跑腿费越多，接单同学越快、越积极哦
+            </view>
+       </view>
+    </van-tab>
+    <van-tab title="帮我买">
+      <view class="card_1">
+            <view class="des">温馨提示:就近购买</view>
+            <view class="b_notes">
+                <view class="b_text">
+                      <textarea value="{{content_value}}" maxlength="100" bindinput="content_Input" placeholder="请输入要购买的商品，如：一包辣条、一桶方便面"></textarea>
+                      <view class="b_less">{{content_counts}}/100</view>
+                </view>
+            </view>
+            <van-cell wx:if="{{!address.address}}"  title="收件地址" value="请选择" bind:click="go"  data-come_id="1" is-link/>
+            <van-cell wx:if="{{address.address}}"  title="收件地址" value="{{address.address}}" bind:click="go"  data-come_id="1" is-link/>
+
+        
+        
+            <van-cell title="大概重量（kg）"/>
+            <van-slider custom-class="slide" value="{{ weight }}" min="1" max="30" use-button-slot bind:drag="change_weight" bind:change="change_weight">
+                <view hidden="{{weight>15}}" class="custom-button" slot="button">{{ weight }}</view>
+                <view hidden="{{weight<15||weight==15}}" class="custom-buttonred" slot="button">{{ weight }}</view>
+            </van-slider>
+
+            <view class="b_bar">
+                      <view class="b_name">跑腿费(元)</view>
+                      <van-stepper value="{{price}}" integer bind:change="price_Change" min="2" max="100" />
+            </view>
+
+            <view class="b_tips">
+                    <text>* </text>跑腿费越多，接单同学越快、越积极哦
+            </view>
+       </view>
+    </van-tab>
+  </van-tabs>
+</view>
+
+<view class="xiadan">
+  <van-button type="info" round bind:click="check">马上下单</van-button>
+</view>
+
+
+
