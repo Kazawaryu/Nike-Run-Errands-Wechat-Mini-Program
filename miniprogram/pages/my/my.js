@@ -183,59 +183,6 @@ Page({
          }
         });
     },
-  //官方接口获取用户信息
-  // getUserProfile(e) {
-  //   let that = this
-  //   // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
-  //   // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-  //   wx.getUserProfile({
-  //     desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-  //     success: (res) => {
-  //       that.setData({
-  //         userInfo: res.userInfo,
-  //       })
-  //       app.globalData.userInfo = res.userInfo
-  //       console.log(that.data.userInfo)
-  //       //存储到用户的user表里，方便以后获取展示
-  //       db.collection('user').where({
-  //         _openid:app.globalData.openid
-  //       }).get({
-  //         success:function(re){
-  //             if(re.data.length==0){
-  //                 db.collection('user').add({
-  //                    data:{
-  //                      userInfo:res.userInfo,
-  //                      money:0,
-  //                    }
-  //                 })
-  //             }else{
-  //               db.collection('user').where({
-  //                 _openid:app.globalData.openid
-  //               }).update({
-  //                 data:{
-  //                   userInfo:res.userInfo
-  //                 }
-  //               })
-  //             }
-  //         }
-  //       })
-  //     }
-  //   })
-  // },
-
-  // /**
-  //  * 生命周期函数--监听页面初次渲染完成
-  //  */
-  // onReady: function () {
-
-  // },
-
-  // /**
-  //  * 生命周期函数--监听页面显示
-  //  */
-  // onShow: function () {
-
-  // },
 
   /**
    * 生命周期函数--监听页面隐藏
