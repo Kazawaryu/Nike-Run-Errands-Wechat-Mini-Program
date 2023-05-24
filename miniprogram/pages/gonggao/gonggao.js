@@ -75,7 +75,7 @@ Page({
             },
             fail() {
                   wx.showToast({
-                        title: '获取失败',
+                        title: '公告获取失败',
                         icon: 'none'
                   })
             }

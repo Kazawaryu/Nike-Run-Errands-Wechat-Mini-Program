@@ -92,7 +92,7 @@ Page({
             })
             wx.hideLoading()
             wx.showToast({
-              title: '提现失败，请重试',
+              title: '提现失败，请稍后重试',
               icon: 'none',
               duration: 2000
             })
