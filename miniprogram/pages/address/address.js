@@ -148,7 +148,7 @@ Page({
             },
             fail() {
                   wx.showToast({
-                        title: '获取失败',
+                        title: '获取信息失败',
                         icon: 'none'
                   })
             }
